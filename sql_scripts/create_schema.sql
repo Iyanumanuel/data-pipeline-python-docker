@@ -1,0 +1,78 @@
+CREATE database stg_reliance;
+
+USE stg_reliance;
+
+CREATE TABLE `enrollee_profile` (
+  `id` int unsigned NULL ,
+  `user_id` int unsigned ,
+  `parent_id` int unsigned DEFAULT NULL,
+  `hmo_id` varchar(50) ,
+  `client_id` int unsigned DEFAULT NULL,
+  `title_id` int unsigned DEFAULT NULL,
+  `other_names` varchar(50) ,
+  `home_address` varchar(191) ,
+  `home_address_state_id` int unsigned  DEFAULT '25',
+  `home_phone_number` varchar(15),
+  `sex` varchar(1) ,
+  `date_of_birth` date ,
+  `nationality_id` int unsigned ,
+  `enrollee_type_id` int unsigned ,
+  `risk_level_id` int unsigned  DEFAULT '1',
+  `has_smartphone` tinyint(1)  DEFAULT '0',
+  `company_name` varchar(191)  DEFAULT '',
+  `office_address` varchar(191)  DEFAULT '',
+  `office_phone_number` varchar(15)  DEFAULT '',
+  `occupation_id` int unsigned ,
+  `position` text ,
+  `preferred_provider_id` int unsigned DEFAULT NULL,
+  `preferred_provider_name` varchar(191)  DEFAULT '',
+  `preferred_provider_location` varchar(191)  DEFAULT '',
+  `profile_picture` varchar(50)  DEFAULT 'avatar.png',
+  `accepted_user_agreement` tinyint(1)  DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `active_status` tinyint unsigned  DEFAULT '2'
+) ENGINE=InnoDB  COLLATE=utf8mb4_unicode_ci;
+
+
+
+
+CREATE TABLE `client` (
+  `id` int unsigned  NULL,
+  `name` varchar(100) ,
+  `short_code` varchar(5) ,
+  `phone_number` varchar(15)  DEFAULT '',
+  `email_address` varchar(100)  DEFAULT '',
+  `logo_url` varchar(50)  DEFAULT 'company.png',
+  `address` varchar(150) ,
+  `state_id` int unsigned ,
+  `industry_id` int unsigned ,
+  `created_by` int unsigned ,
+  `managed_by` int unsigned ,
+  `retained_by` int unsigned DEFAULT NULL,
+  `client_paystack_customer_id` varchar(191) ,
+  `client_paystack_bank_name` varchar(191) ,
+  `client_paystack_dedicated_nuban` varchar(191) ,
+  `client_paystack_nuban_account_name` varchar(191) ,
+  `init_value` int unsigned  DEFAULT '10001',
+  `staff_strength` int unsigned  DEFAULT '0',
+  `hmo_package_id` int unsigned  DEFAULT '2',
+  `type` enum('Corporate','SME') COLLATE utf8mb4_unicode_ci ,
+  `category_id` int unsigned DEFAULT NULL,
+  `add_remove_access` tinyint(1)  DEFAULT '0',
+  `has_custom_end_date` tinyint(1)  DEFAULT '0',
+  `utilization_ratio` decimal(15,2)  DEFAULT '0.00',
+  `is_whitelabelled` tinyint(1)  DEFAULT '0',
+  `wallet_balance` decimal(15,2)  DEFAULT '0.00',
+  `has_previous_hmo` tinyint(1) DEFAULT NULL,
+  `previous_hmo_name` varchar(191) DEFAULT NULL,
+  `was_lead_via_crm` tinyint(1) DEFAULT NULL,
+  `lead_source` varchar(191) DEFAULT NULL,
+  `monnify_account_reference` varchar(191) DEFAULT NULL,
+  `monnify_account_number` varchar(191) DEFAULT NULL,
+  `monnify_account_name` varchar(191) DEFAULT NULL,
+  `monnify_bank_name` varchar(191) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `active_status` tinyint unsigned  DEFAULT '2'
+) ENGINE=InnoDB  COLLATE=utf8mb4_unicode_ci;

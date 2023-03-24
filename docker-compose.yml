@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    image: mysql
+    restart: always
+    container_name: destination_mysql_db
+    environment:
+      # MYSQL_USER: 'root'
+      # MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - '33061:3306'
+    expose:
+      - '3306'
+    volumes:
+      - /var/lib/mysql
+      - "./sql_scripts/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql"
+  
+  etl:
+    container_name: python-etl
+    links:
+      - "db"
+    build: ./

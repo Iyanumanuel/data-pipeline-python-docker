@@ -1,2 +1,2 @@
-# data-pipeline-python-docker
-Data pipeline ingestion with python and docker
+# data-pipeline-v2
+The pipeline moving data from production databases to the analytics databases
